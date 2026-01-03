@@ -1,4 +1,4 @@
-# PySh — A Mini Shell in Python
+# A Mini Shell in Python
 
 PySh is a lightweight, cross-platform **Unix-like mini shell** implemented in Python.  
 It demonstrates core shell concepts such as command parsing, built-in commands, process execution, pipes, redirection, and background jobs.
