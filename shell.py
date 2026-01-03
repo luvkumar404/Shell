@@ -1,25 +1,25 @@
-import shlex
-from PySh.parser import parse_command
+from parser import parse_command
 from executor import execute_pipeline
-from builtins import handle_builtin
-
+from shell_builtins import handle_builtin
 
 def run_shell():
     while True:
         try:
-            command=input("sh> ").strip()
+            command = input("pysh> ").strip()
             if not command:
                 continue
 
-                parsed=parse_command(command)
+            parsed = parse_command(command)
 
-                if handle_builtin(parsed):
-                    continue
-                execute_pipeline(parsed)
+            # Handle built-in commands (cd, exit)
+            if handle_builtin(parsed):
+                continue
+
+            execute_pipeline(parsed)
 
         except KeyboardInterrupt:
             print()
         except FileNotFoundError:
-            print("File not found")
+            print("Command not found")
         except Exception as e:
             print(f"Error: {e}")
